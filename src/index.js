@@ -7,6 +7,7 @@ import 'regenerator-runtime/runtime';
 import React from 'react';
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
+import { Map } from 'immutable';
 
 // root component required for react-hot-loader
 import Root from './containers/Root';
@@ -32,7 +33,7 @@ import './styles/globalStyles';
 // store first parameter is default state
 // for example you can provide default starting value for counter:
 // const store = configureStore({ counter: 10 });
-const initialState = {};
+const initialState = Map();
 const store = configureStore(initialState);
 
 render(

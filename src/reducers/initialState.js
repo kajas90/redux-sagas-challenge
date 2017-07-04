@@ -1,1 +1,6 @@
-// Reducers' default state
+export default {
+  notes: {
+    status: 'ready',
+    data: []
+  }
+}

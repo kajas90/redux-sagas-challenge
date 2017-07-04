@@ -1,7 +1,8 @@
 // Root reducer setup
-import { combineReducers } from 'redux';
+import { combineReducers } from 'redux-immutable'
 import { routerReducer } from 'react-router-redux';
 
-const rootReducer = combineReducers({ routing: routerReducer });
+import NotesReducer from './Notes'
+const rootReducer = combineReducers({notes: NotesReducer });
 
 export default rootReducer;
