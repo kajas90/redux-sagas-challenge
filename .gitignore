@@ -1,0 +1,18 @@
+# Dependencies
+/node_modules
+
+# Testing
+/coverage
+
+# Production
+/dist
+
+# Misc
+.DS_Store
+.idea
+*.iml
+.vscode
+
+# Logs
+logs
+*.log*
