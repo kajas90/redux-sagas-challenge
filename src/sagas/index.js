@@ -1,10 +1,8 @@
 // Root saga
-import { fork } from 'redux-saga/effects';
+import { all, fork } from 'redux-saga/effects';
 
-import defaultSaga from './defaultSaga';
+import NotesSaga from './NotesSaga';
 
 export default function* rootSaga() {
-  yield [
-    fork(defaultSaga)
-  ];
+  yield all([fork(NotesSaga)]);
 }

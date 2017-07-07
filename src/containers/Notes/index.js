@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 
 import { toJS } from 'immutable';
 
+import { getNotes } from '../../actions/notesActions'
+
 import NoteItem from '../../components/NoteItem'
 
 const NotesWrapper = styled.div`
@@ -15,10 +17,16 @@ const NotesWrapper = styled.div`
 `
 
 export class Notes extends React.Component {
+
+  componentDidMount() {
+    this.props.requestNotes();
+  }
+
   render() {
     const { notesStatus, notes } = this.props;
     return (
       <NotesWrapper>
+        <h2>Status: {notesStatus}</h2>
         {notes.map((note) => (<NoteItem key={note.id} note={note.note} />))}
       </NotesWrapper>
     );
@@ -30,7 +38,8 @@ Notes.propTypes = {
   notes: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number,
     note: PropTypes.string
-  }))
+  })),
+  requestNotes: PropTypes.func
 };
 
 const mapStateToProps = (state) => ({
@@ -38,4 +47,8 @@ const mapStateToProps = (state) => ({
   notes: state.getIn(['notes','list','data']).toJS()
 });
 
-export default connect(mapStateToProps)(Notes);
+const mapDispatchToProps = (dispatch) => ({
+  requestNotes: () => dispatch(getNotes())
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Notes);
