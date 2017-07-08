@@ -1,10 +1,20 @@
 import * as types from './actionTypes';
 
-export const addNote = (note) =>
-  {
+export const addNote = (note) => ({
     type: types.ADD_NOTE,
-    note
-  }
+   note
+  })
+
+export const addNoteSuccess = (note) => ({
+  type: types.ADD_NOTE_SUCCESS,
+  note
+})
+
+export const addNoteError = (error) => ({
+  type: types.ADD_NOTE_ERROR,
+  error
+})
+
 
 export const getNotes = () => ({
   type: types.GET_NOTES

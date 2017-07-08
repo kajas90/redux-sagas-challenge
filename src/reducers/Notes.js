@@ -7,7 +7,7 @@ const NotesReducer = (state = fromJS(initialState.notes), action) => {
     case types.ADD_NOTE:
       return state.set('status', 'loading');
     case types.ADD_NOTE_SUCCESS:
-      return state.set('status', 'ready');
+      return state.set('status', 'ready').updateIn(['list','data'], list => list.push({note: action.note}));
     case types.GET_NOTES:
       return state.setIn(['list','status'], 'loading');
     case types.GET_NOTES_SUCCESS:

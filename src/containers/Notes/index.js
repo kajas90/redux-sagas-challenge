@@ -10,6 +10,7 @@ import NotesList from 'components/Notes';
 
 const PageWrapper = styled.section`
   position: relative;
+  padding: 20px;
 `
 
 const Loader = styled.div `
