@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 
 import { Route, Switch, Link } from 'react-router-dom';
 
@@ -10,10 +11,14 @@ import Menu from 'components/Menu'
 import AddNote from './AddNote'
 import Notes from './Notes'
 
+const Wrapper = styled.div`
+  font-family: 'Open Sans';
+`
+
 class App extends React.Component {
   render() {
     return (
-      <div>
+      <Wrapper>
         <Header>
           <AppTitle>
             Our little app
@@ -27,7 +32,7 @@ class App extends React.Component {
           <Route exact path="/" component={Notes} />
           <Route exact path="/add" component={AddNote} />
         </Switch>
-      </div>
+      </Wrapper>
     );
   }
 }
