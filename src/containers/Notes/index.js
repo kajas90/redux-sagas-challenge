@@ -5,15 +5,30 @@ import { connect } from 'react-redux';
 
 import { toJS } from 'immutable';
 
-import { getNotes } from '../../actions/notesActions'
+import { getNotes } from 'actions/notesActions';
+import NotesList from 'components/Notes';
 
-import NoteItem from '../../components/NoteItem'
+const PageWrapper = styled.section`
+  position: relative;
+`
 
-const NotesWrapper = styled.div`
+const Loader = styled.div `
+  position: absolute;
+  top: 0;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 20px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  
+  & > span {
+    animation: blinker 1s linear infinite;
+  }
+  
+  @keyframes blinker {  
+    50% { opacity: 0; }
+  }
 `
 
 export class Notes extends React.Component {
@@ -25,10 +40,10 @@ export class Notes extends React.Component {
   render() {
     const { notesStatus, notes } = this.props;
     return (
-      <NotesWrapper>
-        <h2>Status: {notesStatus}</h2>
-        {notes.map((note) => (<NoteItem key={note.id} note={note.note} />))}
-      </NotesWrapper>
+      <PageWrapper>
+        <NotesList notes={notes} />
+        {notesStatus === 'loading' && <Loader><span>{notesStatus}</span></Loader>}
+      </PageWrapper>
     );
   }
 }

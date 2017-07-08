@@ -11,7 +11,6 @@ const NotesReducer = (state = fromJS(initialState.notes), action) => {
     case types.GET_NOTES:
       return state.setIn(['list','status'], 'loading');
     case types.GET_NOTES_SUCCESS:
-      console.log(action);
       return state.setIn(['list','status'], 'ready').mergeIn(['list','data'],action.notes);
     default:
       return state;
